@@ -1,15 +1,15 @@
 FROM python:3.9
 
-CMD ["apt-get", "update", "&&", "apt-get", "install", "libgl1"]
-
 WORKDIR /app
+
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
 
 COPY requirements.txt .
 
-RUN pip install -r "./requirements.txt"
+RUN pip install -r requirements.txt
 
 COPY . .
 
 EXPOSE 8080
 
-CMD ["uvicorn", "main:app", "--reload", "--port", "8080"]
+CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "8080"]
