@@ -4,7 +4,7 @@ from siammese_network import SiameseModel, get_siamese_network, extract_encoder
 
 siamese_network = get_siamese_network()
 siamese_model = SiameseModel(siamese_network)
-siamese_model.load_weights("./model/siamese_model-final")
+siamese_model.load_weights("siamese_model-final")
 
 encoder = extract_encoder(siamese_model)
 
